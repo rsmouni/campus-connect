@@ -85,7 +85,7 @@ The frontend proxies `/api/*` to `http://localhost:5000` via `package.json`.
 
 2. **Opportunity Text**: Each opportunity's title, description, requirements, and skills are structured into text.
 
-3. **Claude Semantic Analysis**: The AI prompt instructs Claude to:
+3. **GROQ Semantic Analysis**: The AI prompt instructs Claude to:
    - Understand **semantic relevance**, not just keyword overlap
    - Recognize **domain crossover** (e.g., image classification + healthcare → medical AI internship)
    - Identify **transferable skills** and **growth potential**
@@ -147,6 +147,6 @@ The frontend proxies `/api/*` to `http://localhost:5000` via `package.json`.
 | Frontend | React 18, React Router v6, Axios                           |
 | Backend  | Node.js, Express.js                                        |
 | Database | MongoDB with Mongoose ODM                                  |
-| AI       | Anthropic Claude (claude-opus-4-5) via SDK                 |
+| AI       | GROQ API via SDK                                           |
 | Auth     | JWT (jsonwebtoken + bcryptjs)                              |
 | Styling  | Custom CSS with CSS variables, Google Fonts (Syne + Inter) |
