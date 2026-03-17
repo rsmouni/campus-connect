@@ -25,7 +25,7 @@ export default function Navbar() {
         {/* Logo */}
         <NavLink to="/dashboard" style={styles.logo}>
           <span style={styles.logoIcon}>⬡</span>
-          <span>OpportuNet</span>
+          <span>CampusConnect</span>
         </NavLink>
 
         {/* Desktop nav */}

@@ -1,6 +1,6 @@
-# OpportuNet — AI Student Networking & Opportunity Matcher
+# CampusConnect — AI Student Networking & Opportunity Matcher
 
-A full-stack MERN application that uses Claude AI (Anthropic) for **semantic matching** between student profiles and opportunities — internships, research, competitions, and scholarships.
+A full-stack MERN application for **semantic matching** between student profiles and opportunities — internships, research, competitions, and scholarships.
 
 ---
 
@@ -12,7 +12,7 @@ opportunet/
 │   ├── models/       ← User, Profile, Opportunity, Match schemas
 │   ├── routes/       ← auth, profile, opportunities, matches
 │   ├── middleware/   ← JWT auth
-│   ├── utils/        ← AI matcher (Claude), seed data
+│   ├── utils/        ← AI matcher, seed data
 │   └── server.js
 └── frontend/         ← React 18 + React Router v6
     └── src/
@@ -30,7 +30,7 @@ opportunet/
 
 - Node.js 18+
 - MongoDB (local or Atlas)
-- Anthropic API key → https://console.anthropic.com
+- GROQ_API_KEY
 
 ---
 
@@ -43,19 +43,22 @@ cp .env.example .env
 ```
 
 Edit `.env`:
+
 ```
 PORT=5000
 MONGO_URI=mongodb://localhost:27017/opportunet
 JWT_SECRET=change_this_to_a_long_random_string
-ANTHROPIC_API_KEY=sk-ant-...
+GROQ_API_KEY=sk-ant-...
 ```
 
 Seed the database with 12 real-world opportunities:
+
 ```bash
 npm run seed
 ```
 
 Start the server:
+
 ```bash
 npm run dev      # development with nodemon
 # or
@@ -100,20 +103,20 @@ The frontend proxies `/api/*` to `http://localhost:5000` via `package.json`.
 
 ## Key API Endpoints
 
-| Method | Endpoint | Description |
-|--------|----------|-------------|
-| POST | `/api/auth/register` | Register new student |
-| POST | `/api/auth/login` | Login, returns JWT |
-| GET | `/api/auth/me` | Get current user |
-| GET | `/api/profile/me` | Get student profile |
-| PUT | `/api/profile/me` | Update profile |
-| GET | `/api/profile/completeness` | Profile fill score |
-| GET | `/api/opportunities` | List opportunities (filter, search, paginate) |
-| POST | `/api/matches/generate` | **Run AI matching** |
-| GET | `/api/matches` | Get cached matches (filter by type/score/saved) |
-| PATCH | `/api/matches/:id/save` | Save/unsave a match |
-| PATCH | `/api/matches/:id/apply` | Mark as applied |
-| GET | `/api/matches/stats` | Dashboard statistics |
+| Method | Endpoint                    | Description                                     |
+| ------ | --------------------------- | ----------------------------------------------- |
+| POST   | `/api/auth/register`        | Register new student                            |
+| POST   | `/api/auth/login`           | Login, returns JWT                              |
+| GET    | `/api/auth/me`              | Get current user                                |
+| GET    | `/api/profile/me`           | Get student profile                             |
+| PUT    | `/api/profile/me`           | Update profile                                  |
+| GET    | `/api/profile/completeness` | Profile fill score                              |
+| GET    | `/api/opportunities`        | List opportunities (filter, search, paginate)   |
+| POST   | `/api/matches/generate`     | **Run AI matching**                             |
+| GET    | `/api/matches`              | Get cached matches (filter by type/score/saved) |
+| PATCH  | `/api/matches/:id/save`     | Save/unsave a match                             |
+| PATCH  | `/api/matches/:id/apply`    | Mark as applied                                 |
+| GET    | `/api/matches/stats`        | Dashboard statistics                            |
 
 ---
 
@@ -127,23 +130,23 @@ The frontend proxies `/api/*` to `http://localhost:5000` via `package.json`.
 
 ## Judging Criteria Addressed
 
-| Criterion | Implementation |
-|-----------|---------------|
-| **Matching relevance** | Claude performs semantic analysis, not keyword counting |
-| **Explanation clarity** | Per-match plain-English explanations + bullet highlights |
-| **UI design** | Dark, modern dashboard with score rings, animations, badges |
-| **Profile diversity** | Handles any degree/domain — AI adapts to the profile content |
-| **Opportunity updates** | Deadline-based auto-expiry + seed/manual add mechanism |
+| Criterion               | Implementation                                               |
+| ----------------------- | ------------------------------------------------------------ |
+| **Matching relevance**  | Claude performs semantic analysis, not keyword counting      |
+| **Explanation clarity** | Per-match plain-English explanations + bullet highlights     |
+| **UI design**           | Dark, modern dashboard with score rings, animations, badges  |
+| **Profile diversity**   | Handles any degree/domain — AI adapts to the profile content |
+| **Opportunity updates** | Deadline-based auto-expiry + seed/manual add mechanism       |
 
 ---
 
 ## Tech Stack
 
-| Layer | Technology |
-|-------|-----------|
-| Frontend | React 18, React Router v6, Axios |
-| Backend | Node.js, Express.js |
-| Database | MongoDB with Mongoose ODM |
-| AI | Anthropic Claude (claude-opus-4-5) via SDK |
-| Auth | JWT (jsonwebtoken + bcryptjs) |
-| Styling | Custom CSS with CSS variables, Google Fonts (Syne + Inter) |
+| Layer    | Technology                                                 |
+| -------- | ---------------------------------------------------------- |
+| Frontend | React 18, React Router v6, Axios                           |
+| Backend  | Node.js, Express.js                                        |
+| Database | MongoDB with Mongoose ODM                                  |
+| AI       | Anthropic Claude (claude-opus-4-5) via SDK                 |
+| Auth     | JWT (jsonwebtoken + bcryptjs)                              |
+| Styling  | Custom CSS with CSS variables, Google Fonts (Syne + Inter) |

@@ -28,7 +28,7 @@ export default function Login() {
         {/* Logo */}
         <div style={styles.logo}>
           <span style={{ color: '#6366f1', fontSize: 28 }}>⬡</span>
-          <h1 style={{ fontSize: 26, fontFamily: "'Syne',sans-serif" }}>OpportuNet</h1>
+          <h1 style={{ fontSize: 26, fontFamily: "'Syne',sans-serif" }}>CampusConnect</h1>
         </div>
         <p style={styles.sub}>Your AI-powered opportunity matcher</p>
 
